@@ -13,9 +13,8 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Build Docker image
-        uses: actions/docker/cli@master
-        with:
-          args: "build . --tag eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}"
+        run: |
+          docker build . --tag eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
 
       - name: Authenticate into Google Cloud Platform
         uses: actions/gcloud/auth@master
